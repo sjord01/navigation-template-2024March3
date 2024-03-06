@@ -1,5 +1,3 @@
-@import url('/css/fonts-colors.css');
-
 html {
     box-sizing: border-box;
 }
@@ -12,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     max-width: 1990px;
-  /*  min-height: 100vh; */
+    background-color: var(--primary-white);
 
     overflow-x: hidden;
 
@@ -25,8 +23,7 @@ body {
 .body-container {
     max-width: 1990px;
     width: 100%;
- /*   min-height: 100vh; */
-    background-color: var(--yellow-01);
+    background-color: var(--primary-white);
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -34,36 +31,18 @@ body {
 
 :root {
     --heading-font-bold: 'Montserrat-Bold', sans-serif;
-    --heading-font-medium: 'Montserrat-Medium', sans-serif;
-    --main-font-bold: 'AzeretMono-Bold', sans-serif;
+    --heading-font-regular: 'Montserrat-Regular', sans-serif;
     --main-font-regular: 'AzeretMono-Regular', sans-serif;
 
     --primary-white: #E8E3E3;
-    --white-01: #E8E3E3;
-    --gray-01: #DED8D8;
-    --gray-02: #C5BABA;
     --primary-dark: #04101F;
-    --dark-01: #06172D;
-    --blue-01: #0C2D57;
     --blue-02: #134686;
     --blue-03: #3A85E4;
-    --orange-01: #FC6736;
     --orange-02: #FD8D68;
     --orange-03: #FC541D;
-    --pink-01: #FFB0B0;
-    --pink-02: #FFCCCC;
     --pink-03: #FF8080;
 }
 
-@font-face {
-    font-family: 'AzeretMono-Bold';
-    src: url('../fonts/AzeretMono-Bold.woff2') format('woff2'),
-         url('../fonts/AzeretMono-Bold.woff') format('woff'),
-         url('../fonts/AzeretMono-Bold.ttf') format('truetype');
-         font-weight: 700;
-         font-display: swap;
-         font-style: normal;
-} 
   
 @font-face {
     font-family: 'AzeretMono-Regular';
@@ -75,15 +54,15 @@ body {
          font-style: normal;
   }
 
-@font-face {
-    font-family: 'Montserrat-Medium';
-    src: url('../fonts/Montserrat-Medium.woff2') format('woff2'),
-         url('../fonts/Montserrat-Medium.woff') format('woff'),
-         url('../fonts/Montserrat-Medium.ttf') format('truetype');
-         font-weight: 500;
+  @font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+         url('../fonts/Montserrat-Regular.woff') format('woff'),
+         url('../fonts/Montserrat-Regular.ttf') format('truetype');
+         font-weight: 400;
          font-display: swap;
          font-style: normal;
-}
+  }
 
 @font-face {
     font-family: 'Montserrat-Bold';
@@ -95,29 +74,24 @@ body {
          font-style: normal;
 }
 
-@font-face {
-    font-family: 'Montserrat-Black';
-    src: url('../fonts/Montserrat-Black.woff2') format('woff2'),
-         url('../fonts/Montserrat-Black.woff') format('woff'),
-         url('../fonts/Montserrat-Black.ttf') format('truetype');
-         font-weight: 900;
-         font-display: swap;
-         font-style: normal;
-}
-
-
-  .flex {
+.flex {
     display: flex;
     gap: var(--gap, 1rem)
 }
 
-/* main nav */
+/* HEADER/NAVIGATION */
 .logo {
     width: 60px;
     height: auto;
     margin: 4rem 0 1.5rem 1rem;
     position: relative;
     z-index: 99999;
+}
+
+.primary-header {
+    background-color: var(--primary-white);
+    top: 0;
+    position: sticky;
 }
 
 .primary-navigation
@@ -145,14 +119,14 @@ body {
 
 .primary-navigation a {
     text-decoration: none;
-    font-family: var(--heading-font-bold);
-    font-size: 2.5rem;
+    font-family: var(--heading-font-regular);
+    font-size: 1.5rem;
 }
 
 ul, ol {
     list-style: none;
 }
-/* main-nav icon */
+/* NAVIGATION ANIMATION */
 
 .mobile-nav-toggle {
     display: block;
@@ -190,11 +164,10 @@ ul, ol {
     position: absolute;
     z-index: 9999;
     aspect-ratio: 1 / 1;
-    border-top: 4px solid var(--primary-white);
+    border-top: 4px solid var(--primary-dark);
     height: 4px;
     width: 100%;
     margin: 0;
-    background: var(--gray-01);
     opacity: 1;
     left: 0;
     -webkit-transform: rotate(0deg);
@@ -245,12 +218,7 @@ ul, ol {
     left: 50%;
 }
 
-
-
-
-
-
-/* links */
+/* LINKS */
 a:link {
     text-decoration: none;
     color: inherit;
@@ -261,10 +229,10 @@ a:visited {
 }
 
 a:focus {
-    outline: none
+    outline: none;
 }
 
-button, .btn-nav:visited, .btn-main, .btn-secondary, .btn-cart {
+.btn-nav:visited {
     color: inherit;
 }
 
@@ -272,67 +240,100 @@ button, .btn-nav:visited, .btn-main, .btn-secondary, .btn-cart {
     color: var(--orange-03);
 }
 
-.btn-nav:focus, .btn-nav:active {
-    outline: none;
+.external:link {
+    text-decoration: underline;
+    color: var(--blue-03);
 }
 
-button, .btn-main, .btn-secondary, .btn-cart {
-    font-family: 'Montserrat-Bold';
-    font-size: 1.25rem;
-    margin-top: 2rem;
-    padding: 0.8rem 2.75rem 0.8rem 2.75rem;
-    background-color: var(--gray-02);
-    color: var(--dark-01);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.external:visited {
+    color: var(--pink-03);
 }
 
-.btn-main:hover {
-    background-color: var(--orange-01);
+.external:hover {
+    color: var(--blue-02);
 }
 
-.btn-main:active, .btn-secondary:active, .btn-cart:active {
-    transform: scale(0.95);
+/* MAIN BODY */
+main {
+    padding: 1rem;
 }
 
-.btn-secondary {
-    background-color: transparent;
-    border: 1px solid var(--gray-01);
-    color: var(--gray-01);
+h1, h2, h3{
+    font-family: var(--heading-font-bold);
 }
 
-.btn-secondary:hover {
-    background-color: var(--blue-03);
-    border: 1px solid var(--blue-02);
-    color: var(--gray-01);
+h1 {
+    font-size: 2rem;
 }
 
-.btn-cart {
+h2 {
+    font-size: 1.5rem;
+}
+
+p, li {
     font-size: 1rem;
-    margin: 0.25rem;
+    font-family: var(--main-font-regular);
+    line-height: 1.325rem;
 }
 
-.btn-cart:hover {
-    background-color: var(--pink-01);
+.img-feature {
+    width: 100%;
+    height: auto;
 }
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+section > ul {
+    list-style: circle;
+}
+
+ul > ul {
+    list-style: square;
+}
+
+.li-body {
+    margin: 10px 0 10px 0;
+}
+
+blockquote {
+    font-size: 2rem;
+    font-family: var(--heading-font-black);
+    background-color: var(--primary-dark);
+    color: #6609FC;
+    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+blockquote:nth-of-type(2) {
+    color: #14C0C0;
+  }
+  
+  blockquote:nth-of-type(3) {
+    color: #DBFF00;
+}
+
     
 @media (min-width: 767px) { 
 
     /* primary header */
     .logo {
-        margin: 1rem 0 1.5rem 4rem;
+        margin: 1rem 0 1.5rem 6rem;
     }
     
     .primary-header {
         --gap: 2.5rem;
-        background-color: transparent;
+        background-color: var(--primary-white);
         align-items: flex-end;
         justify-content: space-between;
             /* this shoots off the logo img to the left most side and the nav link to the right most side */
-        position: sticky;
         z-index: 9999;
         top: 0;
+
+        position: sticky;
     }
     
     .primary-navigation {
@@ -341,8 +342,9 @@ button, .btn-main, .btn-secondary, .btn-cart {
         list-style: none;
         margin: 0;
         padding: 0;
-        padding-right: 4rem;
+        padding-right: 6rem;
         margin-bottom: 1.5rem;
+        background-color: transparent;
         transform: translateX(0%);
     }
     
@@ -356,5 +358,23 @@ button, .btn-main, .btn-secondary, .btn-cart {
     
     .primary-navigation li {
         color: var(--primary-dark);
+    }
+
+    /* MAIN BODY */
+    main {
+        padding: 0 6rem 0 6rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+    }
+    
+    p, li {
+        font-size: 1.15rem;
+        line-height: 1.5rem;
     }
 }
